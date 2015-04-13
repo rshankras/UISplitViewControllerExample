@@ -31,7 +31,7 @@ class ListTableViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("CellIdentifier", forIndexPath: indexPath) as UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("CellIdentifier", forIndexPath: indexPath) as! UITableViewCell
         
         cell.selected = true
         cell.textLabel?.text = names[indexPath.row]
@@ -45,9 +45,9 @@ class ListTableViewController: UITableViewController {
         if (segue.identifier == "ShowDetailIdentifier") {
             var detail: DetailViewController
             if let navigationController = segue.destinationViewController as? UINavigationController {
-                detail = navigationController.topViewController as DetailViewController
+                detail = navigationController.topViewController as! DetailViewController
             } else {
-                detail = segue.destinationViewController as DetailViewController
+                detail = segue.destinationViewController as! DetailViewController
             }
             
             if let path = tableView.indexPathForSelectedRow() {
